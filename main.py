@@ -1,20 +1,16 @@
 ##Leira Salene 1785752
 
-password1 = input()
-password2 = ''
+import csv
 
-for x in password1:
-    if (x=='i'):
-        password2+="!"
-    elif (x=='a'):
-        password2 += "@"
-    elif (x == 'm'):
-        password2 += "M"
-    elif (x == 'B'):
-        password2 += "8"
-    elif (x == 'o'):
-        password2 += "."
-    else:
-        password2 += x
-password2 += "q*s"
-print (password2)
+data_dict = {}
+fileName = input()
+with open(fileName, newline='') as f:
+    reader = csv.reader(f)
+    for lineArray in reader:
+        for key in lineArray:
+            if key in data_dict:
+                data_dict[key] = data_dict[key] + 1
+            else:
+                data_dict[key] = 1
+for key, count in data_dict.items():
+    print(key, count)
